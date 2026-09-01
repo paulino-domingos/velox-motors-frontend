@@ -5,6 +5,9 @@ import CarsPage from './pages/CarsPage'
 import CarDetailPage from './pages/CarDetailPage'
 import AboutPage from './pages/AboutPage'
 import Navbar from './components/layout/Navbar'
+import Footer from './components/layout/Footer'
+
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +19,7 @@ function App() {
         <Route path="/cars/:slug" element={<CarDetailPage />  } />
         <Route path="/about" element={<AboutPage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 
