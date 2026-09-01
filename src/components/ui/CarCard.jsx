@@ -1,7 +1,17 @@
 import {Link} from 'react-router-dom';
+import { motion } from 'framer-motion';
+
+
+
 function CarCard({image, brand, model, price, fuel}) {
   return (
-    <div className="bg-[#111] border border-[#222] overflow-hidden">
+    <motion.div
+      whileHover={{ scale: 1.03 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className="bg-[#111] border border-[#222] overflow-hidden"
+    >
       <img className="w-full h-48 object-cover" src={image} alt={`${brand} ${model}`} />
       <div className="p-6">
         <p className="text-[#C9A84C] text-xs tracking-widest uppercase">{brand}</p>
@@ -16,7 +26,7 @@ function CarCard({image, brand, model, price, fuel}) {
         </Link>
       </div>      
 
-    </div>
+    </motion.div>
   );
 }
 
