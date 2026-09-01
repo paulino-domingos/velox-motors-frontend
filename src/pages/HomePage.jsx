@@ -1,5 +1,11 @@
 import { motion } from "framer-motion";
 import CarCard from "../components/ui/CarCard";
+import BrandLogo from "../components/ui/BrandLogo";
+
+
+
+
+
 function HomePage() {
 // dados mock — para testar
     const carros = [
@@ -28,6 +34,16 @@ function HomePage() {
         image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800"
     },
     ]
+
+    const marcas = [
+    { name: "BMW", image: "https://www.carlogos.org/car-logos/bmw-logo.png" },
+    { name: "Mercedes", image: "https://www.carlogos.org/car-logos/mercedes-benz-logo.png" },
+    { name: "Porsche", image: "https://www.carlogos.org/car-logos/porsche-logo.png" },
+    { name: "Audi", image: "https://www.carlogos.org/car-logos/audi-logo.png" },
+    { name: "Toyota", image: "https://www.carlogos.org/car-logos/toyota-logo.png" },
+    { name: "Volkswagen", image: "https://www.carlogos.org/car-logos/volkswagen-logo.png" },
+    ];
+
   return (
     <div>
         <section className="h-screen bg-black flex flex-col items-center justify-center">
@@ -56,7 +72,7 @@ function HomePage() {
                 Ver Carros
             </motion.button>
         </section>
-        <section className="bg-[#0A0A0A] py-24 px-26">
+        <section className="bg-[#0A0A0A] py-24 px-16">
             <h2 className="text-white text-4xl font-bold tracking-widest text-center mb-16">Carros em Destaque</h2>
             <div className="grid grid-cols-3 gap-8">
                 {carros.map((carro) => (
@@ -68,6 +84,15 @@ function HomePage() {
                         price={carro.price}
                         fuel={carro.fuel}
                     />
+                ))}
+            </div>
+        </section>
+
+        <section className="bg-[#111] py-24 px-16">
+            <h2 className="text-white text-4xl font-bold tracking-widest text-center mb-16">Nossas Marcas</h2>
+            <div className="grid grid-cols-6 gap-8">
+                {marcas.map((marca, index) => (
+                    <BrandLogo key={index} name={marca.name} image={marca.image} />
                 ))}
             </div>
         </section>
