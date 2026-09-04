@@ -3,7 +3,7 @@ import Logo from '../ui/Logo';
 
 function Navbar() {
   return (
-    <nav className="fixed top-0 w-full bg-black text-white flex justify-between items-center px-8 py-4">
+    <nav className="fixed top-0 w-full bg-black z-50 text-white flex justify-between items-center px-8 py-4">
         <Logo />
         <ul className="flex gap-8 list-none">
             <li><Link to="/">Home</Link></li>

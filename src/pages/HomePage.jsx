@@ -11,6 +11,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 function HomePage() {
+    const pinSectionRef = useRef(null);
+    const pinImageRef = useRef(null);
 
 // dados mock — para testar
     const carros = [
@@ -155,6 +157,55 @@ useEffect(() => {
             </div>
 
         </section>
+
+        {/* Pin Section — Experiência Premium */}
+        <section ref={pinSectionRef} className="relative bg-black">
+            <div className="flex">
+
+                {/* imagem à esquerda — STICKY */}
+                <div className="w-1/2 sticky top-0 h-screen flex items-center px-16">
+                    <img
+                        ref={pinImageRef}
+                        src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=80"
+                        alt="Luxury car"
+                        className="w-full h-[500px] object-cover rounded-lg"
+                    />
+                </div>
+
+                {/* textos à direita — scrollam normalmente */}
+                <div className="w-1/2">
+
+                    {/* Texto 1 — Performance */}
+                    <div className="h-screen flex items-center pl-16">
+                        <div>
+                            <p className="text-[#C9A84C] text-sm tracking-widest uppercase mb-4">Experiência Premium</p>
+                            <h2 className="text-white text-5xl font-bold mb-6">Performance</h2>
+                            <p className="text-gray-400 text-lg">Cada carro é seleccionado pela sua performance excepcional e qualidade superior.</p>
+                        </div>
+                    </div>
+
+                    {/* Texto 2 — Elegância */}
+                    <div className="h-screen flex items-center pl-16">
+                        <div>
+                            <p className="text-[#C9A84C] text-sm tracking-widest uppercase mb-4">Design Exclusivo</p>
+                            <h2 className="text-white text-5xl font-bold mb-6">Elegância</h2>
+                            <p className="text-gray-400 text-lg">Linhas sofisticadas e acabamentos premium que definem o verdadeiro luxo automóvel.</p>
+                        </div>
+                    </div>
+
+                    {/* Texto 3 — Confiança */}
+                    <div className="h-screen flex items-center pl-16">
+                        <div>
+                            <p className="text-[#C9A84C] text-sm tracking-widest uppercase mb-4">Garantia Total</p>
+                            <h2 className="text-white text-5xl font-bold mb-6">Confiança</h2>
+                            <p className="text-gray-400 text-lg">Todos os veículos passam por 150 pontos de inspecção antes de chegar até si.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <section className="bg-[#0A0A0A] py-24 px-16">
             <h2 ref={tituloRef} className="text-white text-4xl font-bold tracking-widest text-center mb-16">Carros em Destaque</h2>
             <div ref={cardsRef} className="grid grid-cols-3 gap-8">
