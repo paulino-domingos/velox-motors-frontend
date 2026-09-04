@@ -1,12 +1,17 @@
 import { motion } from "framer-motion";
 import CarCard from "../components/ui/CarCard";
 import BrandLogo from "../components/ui/BrandLogo";
+import { useRef, useEffect} from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 
 
 
 
 function HomePage() {
+
 // dados mock — para testar
     const carros = [
     {
@@ -43,6 +48,65 @@ function HomePage() {
     { name: "Toyota", image: "https://www.carlogos.org/car-logos/toyota-logo.png" },
     { name: "Volkswagen", image: "https://www.carlogos.org/car-logos/volkswagen-logo.png" },
     ];
+    const cardsRef = useRef(null)
+    const marcasRef = useRef(null)
+    const tituloRef = useRef(null);
+    const marcasTituloRef = useRef(null)
+
+useEffect(() => {
+    // título
+    gsap.from(tituloRef.current, {
+        scrollTrigger: {
+            trigger: tituloRef.current,
+            start: "top 85%",
+        },
+        opacity: 0,
+        y: 100,
+        duration: 1.5,
+        ease: "power3.out",
+    })
+
+    gsap.from(cardsRef.current.children, {
+        scrollTrigger: {
+            trigger: cardsRef.current,
+            start: "top 85%",
+        },
+        opacity: 0,
+        y: 80,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.2,
+        clearProps: "all",
+    })
+
+    // marcas — aparecem um a um!
+    gsap.from(marcasRef.current.children, {
+        scrollTrigger: {
+            trigger: marcasRef.current,
+            start: "top 85%",
+        },
+        opacity: 0,
+        y: 100,
+        duration: 1.5,
+        ease: "power3.out",
+        stagger: 0.15,
+        clearProps: "all",
+    })
+
+    // título marcas
+    gsap.from(marcasTituloRef.current, {
+        scrollTrigger: {
+            trigger: marcasTituloRef.current,
+            start: "top 85%",
+        },
+        opacity: 0,
+        y: 100,
+        duration: 1.5,
+        ease: "power3.out",
+    })
+
+    }, 
+[])
 
   return (
     <div>
@@ -73,8 +137,8 @@ function HomePage() {
             </motion.button>
         </section>
         <section className="bg-[#0A0A0A] py-24 px-16">
-            <h2 className="text-white text-4xl font-bold tracking-widest text-center mb-16">Carros em Destaque</h2>
-            <div className="grid grid-cols-3 gap-8">
+            <h2 ref={tituloRef} className="text-white text-4xl font-bold tracking-widest text-center mb-16">Carros em Destaque</h2>
+            <div ref={cardsRef} className="grid grid-cols-3 gap-8">
                 {carros.map((carro) => (
                     <CarCard
                         key={carro.id}
@@ -89,8 +153,8 @@ function HomePage() {
         </section>
 
         <section className="bg-[#111] py-24 px-16">
-            <h2 className="text-white text-4xl font-bold tracking-widest text-center mb-16">Nossas Marcas</h2>
-            <div className="grid grid-cols-6 gap-8">
+            <h2 ref={marcasTituloRef} className="text-white text-4xl font-bold tracking-widest text-center mb-16">Nossas Marcas</h2>
+            <div ref={marcasRef} className="grid grid-cols-6 gap-8">
                 {marcas.map((marca, index) => (
                     <BrandLogo key={index} name={marca.name} image={marca.image} />
                 ))}

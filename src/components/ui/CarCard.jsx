@@ -7,10 +7,8 @@ function CarCard({image, brand, model, price, fuel}) {
   return (
     <motion.div
       whileHover={{ scale: 1.03 }}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="bg-[#111] border border-[#222] overflow-hidden"
+
     >
       <img className="w-full h-48 object-cover" src={image} alt={`${brand} ${model}`} />
       <div className="p-6">
