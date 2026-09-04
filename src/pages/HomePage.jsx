@@ -110,31 +110,50 @@ useEffect(() => {
 
   return (
     <div>
-        <section className="h-screen bg-black flex flex-col items-center justify-center">
-            <motion.h1 
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-white text-8xl font-bold tracking-widest"
+        <section className="h-screen relative overflow-hidden">
+
+            {/* vídeo de fundo */}
+            <video
+                autoPlay
+                muted
+                loop
+                className="absolute top-0 left-0 w-full h-full object-cover"
             >
-                VELOX Motors
-            </motion.h1>
-            <motion.p 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                className="text-[#C9A84C] text-xl tracking-widest mt-4"
-            >
-                Luxo em Movimento
-            </motion.p>
-            <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 0.5 }}
-                className="bg-[#C9A84C] text-black px-8 py-3 mt-8 font-bold tracking-widest"
-            >
-                Ver Carros
-            </motion.button>
+            <source src="/videos/hero.mp4" type="video/mp4" />
+            </video>
+
+            {/* overlay escuro */}
+            <div className="absolute top-0 left-0 w-full h-full bg-black/60" />
+
+            {/* conteúdo por cima */}
+            <div className="relative z-10 flex flex-col items-center justify-center h-full">
+                <motion.h1 
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="text-white text-8xl font-bold tracking-widest"
+                >
+                    VELOX Motors
+                </motion.h1>
+                <motion.p 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 0.5 }}
+                    className="text-[#C9A84C] text-xl tracking-widest mt-4"
+                >
+                    Luxo em Movimento
+                </motion.p>
+
+                <motion.button
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1, duration: 0.5 }}
+                    className="bg-[#C9A84C] text-black px-8 py-3 mt-8 font-bold tracking-widest"
+                >
+                    Ver Carros
+                </motion.button>
+            </div>
+
         </section>
         <section className="bg-[#0A0A0A] py-24 px-16">
             <h2 ref={tituloRef} className="text-white text-4xl font-bold tracking-widest text-center mb-16">Carros em Destaque</h2>

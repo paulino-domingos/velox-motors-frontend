@@ -6,9 +6,31 @@ import CarDetailPage from './pages/CarDetailPage'
 import AboutPage from './pages/AboutPage'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
+import { useEffect } from 'react'
+import Lenis from 'lenis'
 
 
 function App() {
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      smoothWheel: true,
+    }
+    );
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf)
+
+    return () => { 
+      lenis.destroy()
+    }
+  }, [])
+
   return (
     <BrowserRouter>
       <Navbar />
